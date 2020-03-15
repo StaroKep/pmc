@@ -5,7 +5,11 @@
                 {{isVisibleConsole ? 'Hide' : 'Show' }} post messages
             </button>
         </div>
-        <div class="console-data">{{postMessages}}</div>
+        <div class="console-data">
+            <div v-for="(postMessage, index) in postMessages">
+                {{index}} / {{postMessage}}
+            </div>
+        </div>
     </div>
 </template>
 
@@ -23,8 +27,10 @@
         name: 'Console',
         mounted() {
             window.addEventListener('message', event => {
-                debugger;
-                this.postMessages.push(event);
+                const { data = 'Without data' } = event;
+
+                console.log('POST MESSAGE:', event);
+                this.postMessages.push(JSON.stringify(data));
             })
         },
         methods: {
