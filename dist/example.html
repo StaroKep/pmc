@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example</title>
+</head>
+<body>
+    <button id="post-messages-sender">Send example of post message</button>
+
+    <script>
+        var postMessageData = (currentDate) => ({
+            time: +currentDate,
+            message: 'Hello, world!',
+            additionalData: {
+                author: 'Kirill Eremin',
+                age: currentDate.getFullYear() - 1996,
+                profession: 'JavaScript developer',
+            },
+        });
+
+        var buttonSelector = '#post-messages-sender';
+        var button = document.body.querySelector(buttonSelector);
+
+        button.addEventListener('click', function() {
+            var currentDate = new Date();
+            var data = postMessageData(currentDate);
+
+            window.postMessage(data);
+        });
+    </script>
+</body>
+</html>
