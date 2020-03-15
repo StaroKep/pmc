@@ -23,8 +23,8 @@
         name: 'Console',
         mounted() {
             window.addEventListener('message', event => {
+                debugger;
                 this.postMessages.push(event);
-                console.log(this)
             })
         },
         methods: {
@@ -49,6 +49,7 @@
 
     .root-visible {
         bottom: 0;
+        overflow: auto;
     }
 
     .caption-area {

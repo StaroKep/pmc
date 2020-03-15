@@ -52,7 +52,7 @@
             var currentDate = new Date();
             var data = postMessageData(currentDate);
 
-            window.parent.postMessage(data, `${window.parent.document.location}`);
+            window.parent.postMessage(data, '*');
         });
     </script>
 </body>
