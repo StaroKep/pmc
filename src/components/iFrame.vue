@@ -1,13 +1,18 @@
 <template>
     <div class="root">
-        <iframe class="iframe" :src="iframeSrc"/>
+        <iframe class="iframe" :src="iframeSrc || defaultIframeSrc"/>
     </div>
 </template>
 
 <script>
+    const defaultIframeSrc = 'https://starokep.github.io/pmc/dist/example.html';
+
     export default {
         props: ['iframeSrc'],
-        name: 'iFrame'
+        name: 'iFrame',
+        data: () => ({
+            defaultIframeSrc,
+        })
     };
 </script>
 

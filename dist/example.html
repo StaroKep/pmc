@@ -6,7 +6,32 @@
     <title>Example</title>
 </head>
 <body>
-    <button id="post-messages-sender">Send example of post message</button>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border: 1px solid var(--active-color);
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .button:active {
+            background-color: var(--active-color);
+        }
+    </style>
+
+    <button id="post-messages-sender" class="button">
+        Send example of post message
+    </button>
 
     <script>
         var postMessageData = (currentDate) => ({
@@ -26,7 +51,7 @@
             var currentDate = new Date();
             var data = postMessageData(currentDate);
 
-            window.postMessage(data);
+            window.parent.postMessage(data, `${window.parent.document.location}`);
         });
     </script>
 </body>
